@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{data}}</h1>
+    <h1 :class="$style.red">{{data}}</h1>
   </div>
 </template>
 <script>
@@ -14,6 +14,11 @@ export default {
 </script>
 <style scoped>
 h1{
- color: yellow;
+ color:yellow;
 }
+</style>
+<style module>
+  .red{
+   color: red !important;
+  }
 </style>
