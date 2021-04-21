@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>.active{color: yellow;}</style>
+</head>
+<body>
+  <div id="app">
+    <button @click='hello'></button>
+    <heading :title="a">456</heading>
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+  <script>
+    Vue.component('heading',{
+      mixins:[myMixin],
+      props:['title'],
+      render(h){
+        return h(
+          'h1',
+          {attrs:{title:this.title}},
+          this.$slots.default
+        )
+      }
+    });
+    // 数据驱动应用
+    const app = new Vue({
+      el:"#app",
+      mixins:[myMixin],
+      data() {
+        return {
+          a:123
+        }
+      },
+      methods: {
+        change(){
+        }
+      },
+      computed:{
+
+      }
+    })
+  </script>
+</body>
+</html>
