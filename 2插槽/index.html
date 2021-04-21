@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>.active{color: yellow;}</style>
+</head>
+<body>
+  <div id="app">
+    <div :style="{backgroundColor:'red'}" :class={active:flag}>？？？</div>
+    <model-alert :flag.sync='flag'>
+      wozhijiehaojiaoh
+      <template v-slot:body>
+        我是页脚
+      </template>
+    </model-alert>
+    {{flag}}
+    <hr>
+    <button @click='change'>改变</button>
+    <input type="text" v-model='a'>
+    <div v-for='(as,index) in a' :key='index'>{{as}}</div>
+    <hr>
+    {{all}}
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+  <script>
+    //弹窗组件
+    Vue.component('model-alert',{
+      props:['flag'],
+      methods: {
+        
+      },
+      template:`
+        <div>
+          <button @click="$emit('update:flag',false)"><slot></slot></button><slot name='body'></slot>
+        </div>
+      `
+    })
+    // 数据驱动应用
+    const app = new Vue({
+      el:"#app",
+      data() {
+        return {
+          flag:'true',
+          a:[{name:12,age:46},{name:14,age:46},{name:24,age:46}]
+        }
+      },
+      methods: {
+        change(){
+          this.a.forEach(c=>{
+            Vue.set(c, "d", 15);
+            return c
+          })
+        }
+      },
+      computed:{
+        all(){
+          return this.a
+        }
+      }
+    })
+  </script>
+</body>
+</html>
