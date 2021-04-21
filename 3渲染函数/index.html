@@ -13,30 +13,19 @@
   </div>
   <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
   <script>
-    
-    //插件
-    const MyPlugin ={
-      install(Vue,options){
-          Vue.component('heading',{
-          props:['title'],
-          render(h){
-            return h(
-              'h1',
-              {attrs:{title:this.title}},
-              this.$slots.default
-            )
-          }
-        });
+    Vue.component('heading',{
+      props:['title'],
+      render(h){
+        return h(
+          'h1',
+          {attrs:{title:this.title}},
+          this.$slots.default
+        )
       }
-    }
-    if(typeof window !=='undefind' && window.Vue){
-      //使用插件使用VueVue.use();
-      window.Vue.use(MyPlugin)
-    }
+    });
     // 数据驱动应用
     const app = new Vue({
       el:"#app",
-      // mixins:[myMixin],
       data() {
         return {
           a:123
