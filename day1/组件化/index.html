@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>.active{color: yellow;}</style>
+</head>
+<body>
+  <div id="app">
+    <div :style="{backgroundColor:'red'}" :class={active:flag}>？？？</div>
+    <course-list @handle-click='handleClick' :data='data'></course-list>
+    <model v-model='test'></model>{{test}}
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+  <script>
+    //列表组件
+    Vue.component('course-list',{
+      porps:{
+        courses:{
+          type:Array,
+          default:[]
+        }
+      },
+      methods: {
+        handleClick(){
+          this.$emit('handle-click','zifuchuan');
+        }
+      },
+      template:`
+      <div @click="handleClick">???</div>
+      `
+    })
+    //model组件
+    Vue.component('model',{
+      porps:{
+        test:{
+          type:String,
+          default:''
+        }
+      },
+      methods: {
+        input(){
+          this.$emit('input',this.$refs.input.value);
+        }
+      },
+      template:`
+      <input @input='input' ref='input' type='text'>
+      `
+    })
+    // 数据驱动应用
+    const app = new Vue({
+      el:"#app",
+      data() {
+        return {
+          flag:'true',
+          data:'hello vue',
+          test:'???'
+        }
+      },
+      methods: {
+        handleClick(value){
+          alert(value)
+        }
+      },
+    })
+  </script>
+</body>
+</html>
