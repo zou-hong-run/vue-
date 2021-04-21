@@ -41,8 +41,9 @@
         }
       },
       methods: {
-        input(){
-          this.$emit('input',this.$refs.input.value);
+        input(e){
+          // this.$emit('input',this.$refs.input.value);
+          this.$emit('input',e.target.value);
         }
       },
       template:`
