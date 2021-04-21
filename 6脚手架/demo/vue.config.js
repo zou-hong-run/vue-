@@ -9,6 +9,6 @@ module.exports ={
         res.send('我直接好家伙')
       })
     },
-    proxy: 'http://localhost:4000'
+    // proxy: 'http://localhost:4000'
   }
 }
