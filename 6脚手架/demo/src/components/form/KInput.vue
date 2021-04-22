@@ -24,6 +24,8 @@ export default {
     onInput(e){
       //派发一个input事件
       this.$emit('input',e.target.value)
+      //同时通知父级执行校验
+      this.$parent.$emit('validate')
     }
   },
 }

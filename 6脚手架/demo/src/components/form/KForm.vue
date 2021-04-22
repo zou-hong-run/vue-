@@ -21,6 +21,21 @@ export default {
     }
   },
   methods: {
+    validate(cb){
+      //获取所有的孩子KFormItem
+      //[result]
+      const tasks = this.$children
+      .filter(item=>item.prop)
+      .map(item=>item.validate())
+      //统一处理错误
+      Promise.all(tasks)
+      .then(()=>{
+        cb(true)
+      })
+      .catch(()=>{
+        cb(false)
+      })
+    }
   },
 }
 </script>
