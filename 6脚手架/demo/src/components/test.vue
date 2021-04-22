@@ -1,6 +1,8 @@
 <template>
   <div>
     <h1 :class="$style.red">{{data}}</h1>
+    
+    {{$attrs.foo}}
   </div>
 </template>
 <script>

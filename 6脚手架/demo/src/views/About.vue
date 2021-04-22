@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <test></test>
+    <test :foo='a'></test>
     <hr>
     <h3>{{$store.state.isLogin}}</h3>
     <button @click="changeLogin">切换状态</button>
@@ -12,6 +12,11 @@ export default {
   name:'about',//keep alive使用
   components:{
     test
+  },
+  data () {
+    return {
+      a:123
+    }
   },
   methods: {
     changeLogin(){
