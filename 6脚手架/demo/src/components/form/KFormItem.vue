@@ -9,7 +9,7 @@
 <script>
 import Schema from 'async-validator'
 export default {
-  inject:['form'],
+  inject:['form'],//接收KForm拿到他身上的 rules 和 input的value
   props:{
     label:{
       type:String,
@@ -25,6 +25,7 @@ export default {
     }
   },
   methods: {
+    //验证Kinput输入内容
     validate(){
       //规则
       const rules = this.form.rules[this.prop]

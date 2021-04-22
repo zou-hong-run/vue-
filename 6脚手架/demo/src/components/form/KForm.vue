@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  provide(){
+  provide(){//让其他组件能够使用，index.vue传递过来的props
     return{
       form:this
     }
@@ -21,9 +21,9 @@ export default {
     }
   },
   methods: {
+    //统一验证
     validate(cb){
       //获取所有的孩子KFormItem
-      //[result]
       const tasks = this.$children
       .filter(item=>item.prop)
       .map(item=>item.validate())

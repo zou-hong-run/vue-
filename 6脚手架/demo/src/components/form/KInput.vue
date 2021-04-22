@@ -23,9 +23,9 @@ export default {
   methods: {
     onInput(e){
       //派发一个input事件
-      this.$emit('input',e.target.value)
+      this.$emit('input',e.target.value)//双向绑定的数据，发送给index.vue 然后传递到Kform  然后 传递 到 KFromItem(form)
       //同时通知父级执行校验
-      this.$parent.$emit('validate')
+      this.$parent.$emit('validate')//触发验证事件
     }
   },
 }
