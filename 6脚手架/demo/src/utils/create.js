@@ -1,4 +1,7 @@
 import Vue from 'vue'
+
+import Notice from '../components//Notice'
+
 function create(Component,props){
   //组件构造函数如何获取
   //1const FeatureConstructor = Vue.extend(Main);
@@ -19,4 +22,10 @@ function create(Component,props){
   }
   return comp
 }
-export default create
+export default {
+  install(Vue){
+    Vue.prototype.$notice = function (options) {
+     return create(Notice,options)
+    };
+  }
+}

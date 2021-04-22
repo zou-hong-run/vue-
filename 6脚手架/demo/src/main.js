@@ -6,7 +6,8 @@ import create from './utils/create'
 Vue.config.productionTip = false
 //事件总线
 Vue.prototype.$bus = new Vue()
-Vue.prototype.$create = create
+// Vue.prototype.$create = create
+Vue.use(create)
 new Vue({
   router,
   store,
