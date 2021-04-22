@@ -8,6 +8,7 @@ Vue.config.productionTip = false
 Vue.prototype.$bus = new Vue()
 // Vue.prototype.$create = create
 Vue.use(create)
+//3挂载router实例
 new Vue({
   router,
   store,
