@@ -21,6 +21,7 @@
 import KFormItem from '../form/KFormItem'
 import Kinput from '../form/KInput'
 import KForm from '../form/KForm'
+import Notice from '../Notice'
 export default {
   components:{
     Kinput,
@@ -43,9 +44,19 @@ export default {
     login(){
       this.$refs['loginForm'].validate(valid=>{
         if(valid){
-          alert('submit')
+          const notice = this.$create(Notice,{
+            title:'验证消息',
+            message:valid?"请求登录":"验证失败",
+            duration:5000
+          })
+          notice.show()
         }else{
-          alert('error')
+          const notice = this.$create(Notice,{
+            title:'验证消息',
+            message:valid?"请求登录":"验证失败",
+            duration:5000
+          })
+          notice.show()
           return false
         }
       })
