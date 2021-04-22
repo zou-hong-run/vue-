@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import VueRouter from '../krouter/kvue-router'
 import Home from '../views/Home.vue'
 //1应用插件
 Vue.use(VueRouter)
@@ -35,10 +35,4 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-
-// router.beforeEach((to, from, next) => {
-//   console.log(to,from,next)
-//   next()
-// })
-
 export default router
