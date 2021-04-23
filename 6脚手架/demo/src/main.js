@@ -3,7 +3,7 @@ import App from './App.vue'
 // import router from './router'
 //引入自己写的krouter
 import router from './krouter'
-import store from './store'
+import store from './kstore'
 //提示组件
 import create from './utils/create'
 Vue.config.productionTip = false

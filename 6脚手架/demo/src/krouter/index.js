@@ -20,13 +20,13 @@ const routes = [
     path:'/detail/:name',
     name:'Detail',
     component: () => import('../views/Detail.vue'),
-    // children:[
-    //   {
-    //     path:'user',
-    //     name:'User',
-    //     // component
-    //   }
-    // ]
+    children:[
+      {
+        path:'user',
+        name:'User',
+        // component
+      }
+    ]
   }
 ]
 //创建插件
