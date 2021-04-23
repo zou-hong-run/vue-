@@ -5,8 +5,10 @@ class KVueRouter{
   constructor(options){
     this.$options = options
     //需要创建响应式的current属性
+    //利用vue提供的defineReactive做相应
+    //这样将来current变化的时候，依赖的组件会重新render
     Vue.util.defineReactive(this,'current','/')
-    this.current = '/'
+    // this.current = '/'
     //监控url变化
     window.addEventListener('hashchange',this.onHashChange.bind(this))
     window.addEventListener('load',this.onHashChange.bind(this))
@@ -21,7 +23,7 @@ KVueRouter.install = function(_Vue){
   //挂载$router
 
   //怎么获取根实例中的router选项
-  Vue.mixin({
+  Vue.mixin({//页面beforeCreate时候才创建
     beforeCreate(){
       //这里可以拿到所有组件实例
       //确保根实例的时候才创建
@@ -30,7 +32,6 @@ KVueRouter.install = function(_Vue){
       }
     }
   })
-
   //实现两个全局组件
   Vue.component('router-link',{
     props:{

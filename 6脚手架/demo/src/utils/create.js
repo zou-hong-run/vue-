@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import Notice from '../components//Notice'
+import Notice from '../components/Notice'
 
 function create(Component,props){
   //组件构造函数如何获取
