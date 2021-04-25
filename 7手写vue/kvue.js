@@ -65,6 +65,8 @@ class KVue{
     observe(this.$data)
     // //做一个代理（将$data值放到kvue身上）
     porxy(this,"$data")
+    //创建编译器
+    new Compile(options.el,this)
   }
 }
 //根据对象类型觉得如何做响应化
