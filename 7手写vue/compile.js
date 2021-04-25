@@ -9,19 +9,21 @@ class Compile{
     this.$el = document.querySelector(el)
     if(this.$el){
       //执行编译
-      this.compile()
+      this.compile(this.$el)
     }
   } 
-  compile(){
+  compile(el){
     //遍历el树
     const childNodes = el.childNodes
-    Arrary.from(childNodes).forEach(node=>{
+    Array.from(childNodes).forEach(node=>{
       //判断是否是元素
       if(this.isElement(node)){
-        console.log('编译元素'+node.nodeName)
+        // console.log('编译元素'+node.nodeName)
+        this.compileElement(node)
       }else if(this.isInter(node)){
-        console.log('编译插值绑定'+node.textContent)
-      }else{
+        // console.log('编译插值绑定'+node.textContent)
+        this.compileText(node)
+      }else{  
         console.log('编译其他元素'+node)
       }
       //递归子节点
@@ -29,5 +31,42 @@ class Compile{
         this.compile(node)
       }
     })
+  }
+  isElement(node){
+    return node.nodeType === 1
+  }
+  isInter(node){
+    //首先是文本标签，其次内容是{{xxx}}
+    return node.nodeType ===3 && /\{\{(.*)\}\}/.test(node.textContent)
+  }
+  compileText(node){
+    node.textContent = this.$vm[RegExp.$1]
+  }
+  //编译节点
+  compileElement(node){
+    //当前节点是元素
+    //遍历器属性列表
+    const nodeAttrs = node.attributes
+    Array.from(nodeAttrs).forEach(attr=>{
+      //规定：指令以k-xx="00"定义
+      const attrName = attr.name // k-xx
+      const exp = attr.value // oo
+      if(this.isDirective(attrName)){
+        const dir = attrName.substring(2) //xx
+        //执行指令
+        this[dir] && this[dir](node,exp)
+      }
+    })
+  }
+  isDirective(attr){
+    return attr.indexOf('k-') === 0
+  }
+  // k-text
+  text(node,exp){
+    node.textContent = this.$vm[exp]
+  } 
+  //k-html
+  html(node,exp){
+    node.innerHTML = this.$vm[exp]
   }
 }

@@ -89,4 +89,15 @@ class Observer{
   //数组数据响应化，。。。
 
 }
-
+//观察者(保存更新函数)
+let watcher = []
+class Watcher{
+  constructor(vm,key,updateFn){
+    this.vm = vm 
+    this.key = key
+    this.update = updateFn
+  }
+  update(){
+    this.updateFn.call(this.vm,this.vm[this.key])
+  }
+}

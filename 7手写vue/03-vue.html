@@ -8,9 +8,10 @@
 </head>
 <body>
   <div id="app">
-    {{count}}
+    <p k-text="count"></p>
     <hr>
     {{count}}
+    <p k-html="attr"></p>
   </div>
   <!-- <script src="./6脚手架/demo/node_modules/vue/dist/vue.js"></script> -->
   <script src="./compile.js"></script>
@@ -19,7 +20,8 @@
     const app = new KVue({
       el:'#app',
       data:{
-        count:1
+        count:1,
+        attr:'<span>haojiahuo</span>'
       }
     })
     
