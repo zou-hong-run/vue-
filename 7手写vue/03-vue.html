@@ -11,6 +11,7 @@
     <p k-text="count"></p>
     <hr>
     {{count}}
+    <hr>
     <p k-html="attr"></p>
   </div>
   <!-- <script src="./6脚手架/demo/node_modules/vue/dist/vue.js"></script> -->
@@ -21,12 +22,12 @@
       el:'#app',
       data:{
         count:1,
-        attr:'<span>haojiahuo</span>'
+        attr:'<h2>haojiahuo</h2>'
       }
     })
     
     setInterval(()=>{
-        app.$data.count++
+        app.count++
     },1000)
   </script>
 </body>
