@@ -12,23 +12,27 @@
     <hr>
     {{count}}
     <hr>
+    {{abc.aa}}
+    <hr>
     <p k-html="attr"></p>
+    <hr>
+    <p>{{count}}</p>
   </div>
   <!-- <script src="./6脚手架/demo/node_modules/vue/dist/vue.js"></script> -->
-  <script src="./compile.js"></script>
   <script src="./kvue.js"></script>
   <script>
     const app = new KVue({
       el:'#app',
       data:{
         count:1,
+        abc:{aa:123},
         attr:'<h2>haojiahuo</h2>'
       }
     })
-    
-    setInterval(()=>{
-        app.count++
-    },1000)
+    // app.abc.aa=12331
+    // setInterval(()=>{
+    //     app.count++
+    // },1000)
   </script>
 </body>
 </html>
