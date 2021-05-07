@@ -18,15 +18,15 @@ export default {
     login() {
       // 派发一个登录的动作
       this.$store
-      .dispatch("user/login", { username: this.username })
-      .then(()=>{
-        this.$router.push({
-          path:this.$route.query.redirect || "/"
+        .dispatch("user/login", { username: this.username })
+        .then(() => {
+          this.$router.push({
+            path: this.$route.query.redirect || "/",
+          });
         })
-      })
-      .catch(error=>{
-        alert(error)
-      })
+        .catch((error) => {
+          alert(error);
+        });
     },
   },
 };
