@@ -1,5 +1,5 @@
 import Vue from "vue";
-import "./icons/index.js"
+import "./icons/index.js";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
