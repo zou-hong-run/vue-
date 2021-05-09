@@ -32,9 +32,8 @@ router.beforeEach(async (to, from, next) => {
             "permission/generateRoutes",
             roles
           );
-          // 添加这些理由至路由器
-          router.addRoutes(accessRoutes);
-          // 继续切换路由，确保addRoutes完成
+          router.addRoutes(accessRoutes); // 动态添加可访问路由表
+          // 继续切换路由， hack方法 确保addRoutes完成
           next({
             ...to,
             replace: true,

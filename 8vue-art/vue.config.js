@@ -6,11 +6,13 @@ function resolve(dir) {
 }
 module.exports = {
   publicPath: "./",
+  productionSourceMap: true,
   devServer: {
     port,
   },
   configureWebpack: {
     name: title,
+    devtool: "source-map", // 新增这个 调试模式
   },
   chainWebpack(config) {
     config.resolve.alias.set("@", resolve("src"));

@@ -1,12 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Layout from "@/layout";
 // 安装路由功能
 Vue.use(VueRouter);
+import Layout from "@/layout";
 
 // 通用路由不需要权限
-const routes = [
+export const routes = [
   {
     path: "/login",
     name: "login",
@@ -17,6 +17,10 @@ const routes = [
     path: "/",
     component: Layout,
     redirect: "/home",
+    meta: {
+      title: "Home", // 导航标题
+      icon: "a", // 导航菜单
+    },
     children: [
       {
         path: "home",
@@ -24,8 +28,18 @@ const routes = [
           import(/* webpackChunkName: "about" */ "../views/Home.vue"),
         name: "home",
         meta: {
-          title: "Home", // 导航标题
+          title: "Home2", // 导航标题
           icon: "d", // 导航菜单
+        },
+      },
+      {
+        path: "our",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/Login.vue"),
+        name: "our",
+        meta: {
+          title: "our", // 导航标题
+          icon: "c", // 导航菜单
         },
       },
     ],
