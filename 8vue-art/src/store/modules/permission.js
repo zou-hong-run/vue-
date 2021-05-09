@@ -1,5 +1,4 @@
 import { asyncRoutes, routes as constRoutes } from "@/router";
-console.log("vuex permission")
 // console.log(asyncRoutes, constRoutes)
 /**
  * 根据路由meta.role确定是否当前用户拥有访问权限
@@ -29,7 +28,6 @@ export function filterAsyncRoutes(routes, roles) {
     // 复制一份
     const tmp = { ...route };
     // 如果用户有访问权则加入结果路由表
-    console.log(hasPermission(roles, tmp))
     if (hasPermission(roles, tmp)) {
       // 如果存在子路由则递归过滤之
       if (tmp.children) {
@@ -55,7 +53,6 @@ const mutations = {
 const actions = {
   // 动态路由生成：在得到用户角色后会第一时间调用
   generateRoutes({ commit }, roles) {
-    console.log("动态路由生成")
     return new Promise((resolve) => {
       let accessedRoutes;
       // 用户是管理员则拥有完整访问权限

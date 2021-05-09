@@ -44,6 +44,23 @@ export const routes = [
       },
     ],
   },
+  // 404 401 *
+  {
+    path: "/404",
+    component: (resolve) => require(["@/views/error/404"], resolve),
+    hidden: true,
+  },
+  {
+    path: "/401",
+    component: (resolve) => require(["@/views/error/401"], resolve),
+    hidden: true,
+  },
+  // {
+  //   path: '*', // 页面不存在的情况下会跳到404页面
+  //   redirect: '/404',
+  //   name: 'notFound',
+  //   hidden: true
+  // }
 ];
 // 权限路由
 export const asyncRoutes = [
@@ -51,6 +68,11 @@ export const asyncRoutes = [
     path: "/about",
     component: Layout,
     redirect: "/about/index",
+    meta: {
+      title: "About",
+      icon: "d",
+      roles: ["admin", "editor"], //可以查看角色的身份
+    },
     children: [
       {
         path: "index",
@@ -58,6 +80,33 @@ export const asyncRoutes = [
         name: "about",
         meta: {
           title: "About",
+          icon: "d",
+          roles: ["admin", "editor"], //可以查看角色的身份
+        },
+      },
+      {
+        path: "index2",
+        component: () => import("@/views/About.vue"),
+        name: "about2",
+        meta: {
+          title: "About2",
+          icon: "d",
+          roles: ["admin", "editor"], //可以查看角色的身份
+        },
+      },
+    ],
+  },
+  {
+    path: "/age",
+    name: "age",
+    component: Layout,
+    children: [
+      {
+        path: "index",
+        component: () => import("@/views/Login.vue"),
+        name: "ageindex",
+        meta: {
+          title: "Age",
           icon: "d",
           roles: ["admin", "editor"], //可以查看角色的身份
         },

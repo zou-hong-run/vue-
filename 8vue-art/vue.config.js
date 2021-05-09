@@ -5,14 +5,19 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 module.exports = {
-  publicPath: "./",
-  productionSourceMap: true,
+  publicPath: "/",
+  // productionSourceMap: true,
   devServer: {
     port,
   },
   configureWebpack: {
     name: title,
-    devtool: "source-map", // 新增这个 调试模式
+    resolve: {
+      alias: {
+        "@": resolve("src"),
+      },
+    },
+    // devtool: "source-map", // 新增这个 调试模式
   },
   chainWebpack(config) {
     config.resolve.alias.set("@", resolve("src"));
