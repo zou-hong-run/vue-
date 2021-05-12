@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 import Layout from "@/layout";
 
 // 通用路由不需要权限
+// Addroute特别要注意添加的子路由的path一定要把父路由的路径也带上
 export const routes = [
   {
     path: "/login",
@@ -26,7 +27,7 @@ export const routes = [
         path: "home",
         component: () =>
           import(/* webpackChunkName: "about" */ "../views/Home.vue"),
-        name: "home",
+        name: "home1",
         meta: {
           title: "Home2", // 导航标题
           icon: "d", // 导航菜单
@@ -47,12 +48,12 @@ export const routes = [
   // 404 401 *
   {
     path: "/404",
-    component: (resolve) => require(["@/views/error/404"], resolve),
+    component: () => import("@/views/error/404"),
     hidden: true,
   },
   {
     path: "/401",
-    component: (resolve) => require(["@/views/error/401"], resolve),
+    component: () => import("@/views/error/401"),
     hidden: true,
   },
   // {
@@ -113,10 +114,10 @@ export const asyncRoutes = [
       },
     ],
   },
-];
+]
 const router = new VueRouter({
   mode: "history",
   routes,
-});
+})
 
 export default router;

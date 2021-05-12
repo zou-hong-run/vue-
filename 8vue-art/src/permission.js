@@ -32,7 +32,7 @@ router.beforeEach(async (to, from, next) => {
             "permission/generateRoutes",
             roles
           );
-          router.addRoutes(accessRoutes); // 动态添加可访问路由表
+          router.addRoute(...accessRoutes); // 动态添加可访问路由表
           // 继续切换路由， hack方法 确保addRoutes完成
           next({
             ...to,
@@ -41,7 +41,8 @@ router.beforeEach(async (to, from, next) => {
         } catch (error) {
           // 出现错误，重置令牌并重新登录（令牌过期，网络错误等原因）
           await store.dispatch("user/resetToken");
-          Message.error(error || "have an error");
+          console.log(error)
+          Message.error({message: error || "出现错误，请稍后再试"})
           next(`/login?redirect=${to.path}`);
         }
       }
